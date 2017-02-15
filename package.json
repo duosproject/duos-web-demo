@@ -1,0 +1,26 @@
+{
+  "name": "duosproject",
+  "description": "DUOS Project Web Application",
+  "license": "MIT",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.0.0",
+    "body-parser": "^1.0.0",
+    "compression": "^1.0.0",
+    "bower": "^1.0.0",
+    "morgan": "^1.0.0",
+    "gulp": "^3.0.0",
+    "gulp-sass": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "^2.0.0",
+    "browser-sync": "^2.0.0",
+    "jshint": "^2.0.0",
+    "gulp-jshint": "^2.0.0",
+    "jshint-stylish": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "gulp sass"
+  }
+}
