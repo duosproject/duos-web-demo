@@ -18,5 +18,9 @@
     "jshint": "^2.0.0",
     "gulp-jshint": "^2.0.0",
     "jshint-stylish": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "gulp sass"
   }
 }
