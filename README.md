@@ -1,2 +1,1 @@
-# duos-web
-DUOS Project Web Application
+# DUOS Project Web Application
