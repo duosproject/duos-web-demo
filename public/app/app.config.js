@@ -9,6 +9,6 @@
 
     function AppConfig($mdIconProvider) {
         $mdIconProvider
-            .icon('menu', './assets/images/svg/menu.svg', 24)
+            .icon('menu', './assets/images/svg/menu.svg', 24);
     }
 })();
