@@ -1,5 +1,11 @@
 {
   "name": "duosproject",
   "author": "Yauheni Mukavozchyk <ymukavozchyk@luc.edu>",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-ui-router": "^0.x.x",
+    "angular-material": "^1.0.0",
+    "angular-sanitize": "^1.0.0"
+  }
 }
