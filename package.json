@@ -21,6 +21,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "gulp sass"
+    "postinstall": "bower install && gulp sass"
   }
 }
