@@ -1,0 +1,12 @@
+@import 'mixins';
+
+.logo-link{
+  &:link, &:visited, &:hover, &:active{
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.link {
+  @include link-template(#265C83, #007BE6, none, none);
+}
