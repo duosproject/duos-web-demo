@@ -27,7 +27,7 @@
                     vm.hideLoader = true;
                     vm.showError = true;
                     vm.showErrorDialog();
-                })
+                });
         }
 
         vm.showErrorDialog = function () {
