@@ -1,0 +1,43 @@
+<div layout="row" layout-sm="column" layout-align="center center" ng-hide="vm.hideLoader" flex>
+    <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
+</div>
+
+<md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
+
+    <h1>Tagged Instances</h1>
+    <table>
+        <thead>
+            <th>Instance ID</th>
+            <th>Article ID</th>
+            <th>Parent Object ID</th>
+            <th>Object ID</th>
+            <th>Tag</th>
+            <th>Value</th>
+            <th>Context</th>
+        </thead>
+        <tbody ng-repeat="model in vm.collection">
+            <tr>
+                <td>{{ model.instanceId }}</td>
+                <td>{{ model.articleId }}</td>
+                <td>{{ model.parentObjectId }}</td>
+                <td>{{ model.objectId }}</td>
+                <td>{{ model.tag }}</td>
+                <td>{{ model.value }}</td>
+                <td>{{ model.context }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</md-content>
+
+<div layout="row" layout-align="center center" ng-show="vm.hideLoader && vm.showError" flex>
+    <div>
+        <h3 class="neutral-warning-text">
+            <md-icon md-svg-icon="warning"></md-icon>
+            Oops! <a href="javascript:void(0);" class="error-link" ng-click="vm.refreshPage()">Please try again</a>
+        </h3>
+        <p class="center-text">
+            <a href="javascript:void(0);" class="error-link" ng-click="vm.showErrorDialog()">Show error</a>
+        </p>
+    </div>
+</div>

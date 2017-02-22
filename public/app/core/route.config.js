@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -16,6 +16,15 @@
                 controllerAs: 'vm',
                 data: {
                     title: 'Main'
+                }
+            })
+            .state('main.grid', {
+                url: '/grid',
+                templateUrl: 'app/main/grid/grid.html',
+                controller: 'GridController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Tagged Instances Grid'
                 }
             });
     }
