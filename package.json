@@ -3,12 +3,16 @@
   "description": "DUOS Project Web Application",
   "license": "MIT",
   "version": "0.0.1",
+  "author": "Yauheni Mukavozchyk <ymukavozchyk@luc.edu>",
   "dependencies": {
     "express": "^4.0.0",
     "body-parser": "^1.0.0",
     "compression": "^1.0.0",
     "bower": "^1.0.0",
     "morgan": "^1.0.0",
+    "pg": "^6.0.0",
+    "pg-hstore": "^2.0.0",
+    "sequelize": "^3.0.0",
     "gulp": "^3.0.0",
     "gulp-sass": "^3.0.0"
   },
