@@ -10,3 +10,12 @@
 .link {
   @include link-template(#265C83, #007BE6, none, none);
 }
+
+.error-link {
+  @include link-template(#666666, #828282, underline, underline);
+}
+
+.neutral-warning-text{
+  text-align: center;
+  color: #757575;
+}
