@@ -20,7 +20,7 @@
         function activate() {
             ApiService.getTaggedInstances()
                 .then(function (res) {
-                    console.log(res);
+                    vm.collection = res.data.collection;
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;

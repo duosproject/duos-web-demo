@@ -4,7 +4,29 @@
 
 <md-content layout="column" layout-align="center center" ng-show="vm.hideLoader && !vm.showError" ng-class="{ flex: vm.hideLoader && !vm.showError }">
 
-    <h1>Test</h1>
+    <h1>Tagged Instances</h1>
+    <table>
+        <thead>
+            <th>Instance ID</th>
+            <th>Article ID</th>
+            <th>Parent Object ID</th>
+            <th>Object ID</th>
+            <th>Tag</th>
+            <th>Value</th>
+            <th>Context</th>
+        </thead>
+        <tbody ng-repeat="model in vm.collection">
+            <tr>
+                <td>{{ model.instanceId }}</td>
+                <td>{{ model.articleId }}</td>
+                <td>{{ model.parentObjectId }}</td>
+                <td>{{ model.objectId }}</td>
+                <td>{{ model.tag }}</td>
+                <td>{{ model.value }}</td>
+                <td>{{ model.context }}</td>
+            </tr>
+        </tbody>
+    </table>
 
 </md-content>
 
