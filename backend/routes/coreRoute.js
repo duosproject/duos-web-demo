@@ -11,7 +11,7 @@ module.exports = function (app) {
         .get(function (req, res) {
             db.taggedInstances.findAll()
                 .then(function (data) {
-                    return res.status(200).json({ ok: true, data: taggedInstancesVm(data) });
+                    return res.status(200).json({ ok: true, collection: taggedInstancesVm(data) });
                 })
                 .catch(function (err) {
                     return res.status(500).json({ ok: false, error: err.message });
