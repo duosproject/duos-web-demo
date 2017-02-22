@@ -12,7 +12,7 @@
         activate();
 
         function activate() {
-            $state.go('main');
+            $state.go('main.grid');
         }
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

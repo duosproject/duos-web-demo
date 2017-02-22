@@ -5,6 +5,7 @@
         .module('app',
         [
             'app.core',
-            'app.main'
+            'app.main',
+            'app.main.grid'
         ]);
 })();

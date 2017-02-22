@@ -12,6 +12,7 @@
         activate();
 
         function activate() {
+            $state.go('main.grid');
         }
 
         vm.openMenu = function () {
