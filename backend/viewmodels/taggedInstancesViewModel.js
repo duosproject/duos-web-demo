@@ -16,4 +16,4 @@ module.exports = function (data) {
     });
 
     return collection;
-}
+};
