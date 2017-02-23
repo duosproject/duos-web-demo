@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <meta name="description" content="DUOS Project Web Application">
 
+    <!-- build:css -->
     <link rel="stylesheet" href="assets/vendors/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="assets/styles/css/build/main.css">
+    <!-- endbuild -->
 
     <style type="text/css">
         [ng\:cloak],
@@ -26,6 +28,8 @@
 <body layout="column" ng-cloak>
     <div flex layout="column" ui-view></div>
 
+    <!-- build:js -->
+    <!-- Angular js -->
     <script src="assets/vendors/angular/angular.min.js"></script>
     <script src="assets/vendors/angular-animate/angular-animate.min.js"></script>
     <script src="assets/vendors/angular-sanitize/angular-sanitize.min.js"></script>
@@ -52,6 +56,7 @@
 
     <script src="app/main/grid/grid.module.js"></script>
     <script src="app/main/grid/grid.js"></script>
+    <!-- endbuild -->
 
 </body>
 
