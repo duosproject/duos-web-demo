@@ -15,7 +15,7 @@
         vm.showError = false;
         vm.errorMessage = '';
 
-        vm.limitOptions = [5, 10, 15];
+        vm.limitOptions = [10, 20, 30, 40, 50, 100];
 
         vm.filter = {
             options: {
@@ -26,7 +26,7 @@
         vm.query = {
             filter: '',
             order: '',
-            limit: 5,
+            limit: 10,
             page: 1
         };
 
