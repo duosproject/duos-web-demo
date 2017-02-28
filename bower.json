@@ -6,6 +6,7 @@
     "angular": "^1.6.0",
     "angular-ui-router": "^0.x.x",
     "angular-material": "^1.0.0",
-    "angular-sanitize": "^1.0.0"
+    "angular-sanitize": "^1.0.0",
+    "angular-material-data-table": "^0.x.x"
   }
 }

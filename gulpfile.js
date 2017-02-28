@@ -61,6 +61,7 @@ gulp.task('bundle', ['bundle-js', 'bundle-css'], function () {
 gulp.task('bundle-css', ['sass'], function () {
     return gulp.src([
         'public/assets/vendors/angular-material/angular-material.css',
+        'public/assets/vendors/angular-material-data-table/dist/md-data-table.min.css',
         'public/assets/styles/css/build/main.css'
     ])
         .pipe(cssmin())
@@ -92,7 +93,8 @@ gulp.task('bundle-js-vendors', function () {
         'public/assets/vendors/angular-aria/angular-aria.min.js',
         'public/assets/vendors/angular-messages/angular-messages.min.js',
         'public/assets/vendors/angular-material/angular-material.min.js',
-        'public/assets/vendors/angular-ui-router/release/angular-ui-router.min.js'
+        'public/assets/vendors/angular-ui-router/release/angular-ui-router.min.js',
+        'public/assets/vendors/angular-material-data-table/dist/md-data-table.min.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest('public/assets/js/build'));
