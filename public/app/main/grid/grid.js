@@ -19,12 +19,12 @@
 
         vm.filter = {
             options: {
-                debounce: 500
+                debounce: 300
             }
         };
 
         vm.query = {
-            filter: '',
+            filter: {},
             order: '',
             limit: 10,
             page: 1

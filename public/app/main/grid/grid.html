@@ -23,7 +23,7 @@
 
         <md-toolbar class="md-table-toolbar md-default ng-hide" ng-show="vm.filter.show">
             <div class="md-toolbar-tools">
-                <input class="search-box" type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="Search">
+                <input class="search-box" type="text" ng-model="vm.query.filter.$" ng-model-options="vm.filter.options" placeholder="Global search">
                 <div flex></div>
                 <md-button class="md-icon-button" ng-click="vm.removeFilter()" aria-label="Clear">
                     <md-icon md-svg-icon="clear"></md-icon>
