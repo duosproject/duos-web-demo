@@ -14,7 +14,12 @@
     "pg-hstore": "^2.0.0",
     "sequelize": "^3.0.0",
     "gulp": "^3.0.0",
-    "gulp-sass": "^3.0.0"
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "*",
+    "gulp-concat": "*",
+    "gulp-clean": "*",
+    "gulp-cssmin": "*",
+    "gulp-html-replace": "*"
   },
   "devDependencies": {
     "gulp-nodemon": "^2.0.0",
@@ -25,6 +30,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "bower install && gulp sass"
+    "postinstall": "bower install && gulp production"
   }
 }

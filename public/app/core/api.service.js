@@ -13,7 +13,7 @@
 
         return service;
 
-        function getTaggedInstances(){
+        function getTaggedInstances() {
             return $http.get('/api/core/taggedInstances');
         }
     }
