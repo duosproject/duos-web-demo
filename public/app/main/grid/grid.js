@@ -5,8 +5,8 @@
         .module('app.main.grid')
         .controller('GridController', GridController);
 
-    GridController.$inject = ['$q', '$state', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function GridController($q, $state, $mdSidenav, $mdDialog, ApiService) {
+    GridController.$inject = ['$state', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function GridController($state, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.taggedInstances = {};
