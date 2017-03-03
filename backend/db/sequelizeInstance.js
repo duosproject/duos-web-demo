@@ -1,5 +1,6 @@
 'use strict';
 
+//set up ORM for PostgreSQL
 var Sequelize = require('sequelize');
 var taggedInstancesModel = require('../models/taggedInstancesModel');
 

@@ -12,9 +12,11 @@
         activate();
 
         function activate() {
+            //default state
             $state.go('main.grid');
         }
 
+        //dynamic page title
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             $rootScope.pageTitle = toState.data.title;
         });

@@ -7,6 +7,7 @@ var router = express.Router();
 
 module.exports = function (app) {
 
+//returns all the records from TaggedInstances table
     router.route('/taggedInstances')
         .get(function (req, res) {
             db.taggedInstances.findAll()

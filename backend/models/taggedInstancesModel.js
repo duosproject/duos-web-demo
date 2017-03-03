@@ -1,5 +1,6 @@
 'use strict';
 
+//model for TaggedInstances table
 module.exports = function (sequelize, Sequelize) {
     var TaggedInstances = sequelize.define('TaggedInstances',
         {
