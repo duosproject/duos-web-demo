@@ -12,6 +12,7 @@
         activate();
 
         function activate() {
+            //default nested state of main
             $state.go('main.grid');
         }
 

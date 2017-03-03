@@ -1,5 +1,6 @@
 'use strict';
 
+//viewmodel of the TaggedInstances objects which will be returned to the client
 module.exports = function (data) {
     var collection = [];
 

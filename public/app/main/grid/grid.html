@@ -10,7 +10,7 @@
             <div class="md-toolbar-tools">
                 <span>Tagged Instances</span>
                 <div flex></div>
-                <md-button class="md-icon-button" ng-click="vm.filter.show = true" aria-label="Filter">
+                <md-button class="md-icon-button" ng-click="vm.showFilter()" aria-label="Filter">
                     <md-icon md-svg-icon="filter"></md-icon>
                     <md-tooltip>Filter</md-tooltip>
                 </md-button>
@@ -23,9 +23,9 @@
 
         <md-toolbar class="md-table-toolbar md-default ng-hide" ng-show="vm.filter.show">
             <div class="md-toolbar-tools">
-                <input class="search-box" type="text" ng-model="vm.query.filter.$" ng-model-options="vm.filter.options" placeholder="Global search">
+                <input id="filterInput" class="search-box" type="text" ng-model="vm.query.filter.$" ng-model-options="vm.filter.options" placeholder="Global search">
                 <div flex></div>
-                <md-button class="md-icon-button" ng-click="vm.removeFilter()" aria-label="Clear">
+                <md-button class="md-icon-button" ng-click="vm.hideFilter()" aria-label="Clear">
                     <md-icon md-svg-icon="clear"></md-icon>
                     <md-tooltip>Clear</md-tooltip>
                 </md-button>

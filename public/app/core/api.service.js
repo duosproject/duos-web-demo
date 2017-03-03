@@ -13,6 +13,7 @@
 
         return service;
 
+        //returns all the records from TaggedInstances table
         function getTaggedInstances() {
             return $http.get('/api/core/taggedInstances');
         }

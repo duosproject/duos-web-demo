@@ -5,8 +5,8 @@
         .module('app.main.grid')
         .controller('GridController', GridController);
 
-    GridController.$inject = ['$state', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function GridController($state, $mdSidenav, $mdDialog, ApiService) {
+    GridController.$inject = ['$state', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function GridController($state, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.taggedInstances = {};
@@ -64,9 +64,19 @@
             location.reload();
         };
 
-        vm.removeFilter = function () {
+        vm.hideFilter = function () {
             vm.filter.show = false;
-            vm.query.filter = '';
+            vm.query.filter = {};
+        };
+
+        vm.showFilter = function () {
+            vm.filter.show = true;
+            $timeout(function () {
+                var searchInput = $window.document.getElementById('filterInput');
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            });
         };
 
         vm.refresh = function () {
