@@ -70,7 +70,7 @@
         };
 
         vm.showFilter = function () {
-            vm.filter.show = true
+            vm.filter.show = true;
             $timeout(function () {
                 var searchInput = $window.document.getElementById('filterInput');
                 if (searchInput) {
