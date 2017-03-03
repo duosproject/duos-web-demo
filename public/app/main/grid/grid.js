@@ -64,9 +64,13 @@
             location.reload();
         };
 
-        vm.removeFilter = function () {
+        vm.hideFilter = function () {
             vm.filter.show = false;
-            vm.query.filter = '';
+            vm.query.filter = {};
+        };
+
+        vm.showFilter = function () {
+            vm.filter.show = true
         };
 
         vm.refresh = function () {
