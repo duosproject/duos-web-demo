@@ -6,6 +6,7 @@
         [
             'app.core',
             'app.main',
-            'app.main.taggedinstances'
+            'app.main.taggedinstances',
+            'app.main.articles'
         ]);
 })();

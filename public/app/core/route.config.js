@@ -26,6 +26,15 @@
                 data: {
                     title: 'Tagged Instances'
                 }
+            })
+            .state('main.articles', {
+                url: '/articles',
+                templateUrl: 'app/main/articles/articles.html',
+                controller: 'ArticlesController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Articles'
+                }
             });
     }
 })();
