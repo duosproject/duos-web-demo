@@ -18,7 +18,20 @@ var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, proc
     }
 });
 
+var taggedInstances = taggedInstancesModel(sequelize, Sequelize);
+var articles = articlesModel(sequelize, Sequelize);
+
+//defining relations
+taggedInstances.belongsTo(articles, {
+    foreignKey: 'articleId'
+});
+
+articles.hasMany(taggedInstances, {
+    foreignKey: 'articleId'
+});
+
+
 module.exports = {
-    taggedInstances: taggedInstancesModel(sequelize, Sequelize),
-    articles: articlesModel(sequelize, Sequelize)
+    taggedInstances: taggedInstances,
+    articles: articles
 };
