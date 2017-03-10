@@ -9,13 +9,6 @@
     function MainController($state, $mdSidenav) {
         var vm = this;
 
-        activate();
-
-        function activate() {
-            //default nested state of main
-            $state.go('main.taggedInstances');
-        }
-
         vm.openMenu = function () {
             $mdSidenav('left').toggle();
         };
