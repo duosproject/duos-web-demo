@@ -18,13 +18,13 @@
                     title: 'Main'
                 }
             })
-            .state('main.grid', {
-                url: '/grid',
-                templateUrl: 'app/main/grid/grid.html',
-                controller: 'GridController',
+            .state('main.taggedinstances', {
+                url: '/taggedinstances',
+                templateUrl: 'app/main/taggedinstances/taggedinstances.html',
+                controller: 'TaggedInstancesController',
                 controllerAs: 'vm',
                 data: {
-                    title: 'Tagged Instances Grid'
+                    title: 'Tagged Instances'
                 }
             });
     }

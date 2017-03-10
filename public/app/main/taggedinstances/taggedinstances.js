@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('app.main.grid')
-        .controller('GridController', GridController);
+        .module('app.main.taggedinstances')
+        .controller('TaggedInstancesController', TaggedInstancesController);
 
-    GridController.$inject = ['$state', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function GridController($state, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    TaggedInstancesController.$inject = ['$state', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function TaggedInstancesController($state, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.taggedInstances = {};

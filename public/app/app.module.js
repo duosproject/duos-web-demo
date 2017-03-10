@@ -6,6 +6,6 @@
         [
             'app.core',
             'app.main',
-            'app.main.grid'
+            'app.main.taggedinstances'
         ]);
 })();

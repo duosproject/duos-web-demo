@@ -13,7 +13,7 @@
 
         function activate() {
             //default nested state of main
-            $state.go('main.grid');
+            $state.go('main.taggedinstances');
         }
 
         vm.openMenu = function () {
