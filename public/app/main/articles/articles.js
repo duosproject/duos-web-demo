@@ -5,8 +5,8 @@
         .module('app.main.articles')
         .controller('ArticlesController', ArticlesController);
 
-    ArticlesController.$inject = ['$state', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function ArticlesController($state, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    ArticlesController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function ArticlesController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.articles = {};

@@ -5,8 +5,8 @@
         .module('app.main.taggedInstances')
         .controller('TaggedInstancesController', TaggedInstancesController);
 
-    TaggedInstancesController.$inject = ['$state', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function TaggedInstancesController($state, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    TaggedInstancesController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function TaggedInstancesController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.taggedInstances = {};
