@@ -13,7 +13,7 @@
 
         function activate() {
             //default nested state of main
-            $state.go('main.taggedinstances');
+            $state.go('main.taggedInstances');
         }
 
         vm.openMenu = function () {

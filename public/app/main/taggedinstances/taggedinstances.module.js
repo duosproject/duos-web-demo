@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.main.taggedinstances',
+        .module('app.main.taggedInstances',
         [
             'md.data.table'
         ]);

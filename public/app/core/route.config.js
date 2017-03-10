@@ -18,9 +18,9 @@
                     title: 'Main'
                 }
             })
-            .state('main.taggedinstances', {
-                url: '/taggedinstances',
-                templateUrl: 'app/main/taggedinstances/taggedinstances.html',
+            .state('main.taggedInstances', {
+                url: '/taggedInstances',
+                templateUrl: 'app/main/taggedInstances/taggedInstances.html',
                 controller: 'TaggedInstancesController',
                 controllerAs: 'vm',
                 data: {

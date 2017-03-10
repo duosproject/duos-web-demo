@@ -13,7 +13,7 @@
 
         function activate() {
             //default state
-            $state.go('main.taggedinstances');
+            $state.go('main.taggedInstances');
         }
 
         //dynamic page title
