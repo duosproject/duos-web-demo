@@ -9,7 +9,8 @@
     function ApiService($http) {
         var service = {
             getTaggedInstances: getTaggedInstances,
-            getArticles: getArticles
+            getArticles: getArticles,
+            getTaggedInstancesArticles: getTaggedInstancesArticles
         };
 
         return service;
@@ -22,6 +23,11 @@
         //returns all the records from Articles table
         function getArticles() {
             return $http.get('/api/core/articles');
+        }
+
+        //returns all the records from TaggedInstances table joined with Articles table
+        function getTaggedInstancesArticles() {
+            return $http.get('/api/core/taggedInstances/articles');
         }
     }
 })();
