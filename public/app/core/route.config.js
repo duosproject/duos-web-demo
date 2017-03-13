@@ -19,8 +19,8 @@
                 }
             })
             .state('main.taggedInstances', {
-                url: '/taggedInstances',
-                templateUrl: 'app/main/taggedInstances/taggedInstances.html',
+                url: '/taggedinstances',
+                templateUrl: 'app/main/taggedinstances/taggedinstances.html',
                 controller: 'TaggedInstancesController',
                 controllerAs: 'vm',
                 data: {
@@ -28,8 +28,8 @@
                 }
             })
             .state('main.taggedInstancesArticles', {
-                url: '/taggedInstancesArticles',
-                templateUrl: 'app/main/taggedInstancesArticles/taggedInstancesArticles.html',
+                url: '/taggedinstancesirticles',
+                templateUrl: 'app/main/taggedinstancesarticles/taggedinstancesarticles.html',
                 controller: 'TaggedInstancesArticlesController',
                 controllerAs: 'vm',
                 data: {
