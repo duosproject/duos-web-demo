@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.main.taggedInstancesArticles',
+        .module('app.main.joined',
         [
             'md.data.table'
         ]);

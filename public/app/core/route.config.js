@@ -27,10 +27,10 @@
                     title: 'Tagged Instances'
                 }
             })
-            .state('main.taggedInstancesArticles', {
-                url: '/taggedinstancesarticles',
-                templateUrl: 'app/main/taggedinstancesarticles/taggedinstancesarticles.html',
-                controller: 'TaggedInstancesArticlesController',
+            .state('main.joined', {
+                url: '/joined',
+                templateUrl: 'app/main/joined/joined.html',
+                controller: 'JoinedController',
                 controllerAs: 'vm',
                 data: {
                     title: 'Tagged Instances - Articles'

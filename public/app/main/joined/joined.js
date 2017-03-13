@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('app.main.taggedInstancesArticles')
-        .controller('TaggedInstancesArticlesController', TaggedInstancesArticlesController);
+        .module('app.main.joined')
+        .controller('JoinedController', JoinedController);
 
-    TaggedInstancesArticlesController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function TaggedInstancesArticlesController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    JoinedController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function JoinedController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.taggedInstancesArticles = {};

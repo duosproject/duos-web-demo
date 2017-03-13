@@ -7,7 +7,7 @@
             'app.core',
             'app.main',
             'app.main.taggedInstances',
-            'app.main.taggedInstancesArticles',
+            'app.main.joined',
             'app.main.articles'
         ]);
 })();
