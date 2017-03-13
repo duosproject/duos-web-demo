@@ -3,7 +3,7 @@
         <md-icon md-svg-icon="menu"></md-icon>
         <md-tooltip>Open menu</md-tooltip>
     </md-button>
-    <a class="logo-link" ui-sref="main.grid">DUOS</a>
+    <a class="logo-link" ui-sref="main.taggedInstances">DUOS</a>
     <span flex></span>
 </md-toolbar>
 
@@ -19,8 +19,14 @@
     </md-toolbar>
 
     <md-list>
-        <md-list-item ng-click="vm.changeStateFromMenu('main.grid')">
+        <md-list-item ng-click="vm.changeStateFromMenu('main.taggedInstances')">
             <h3>Tagged Instances</h3>
+        </md-list-item>
+        <md-list-item ng-click="vm.changeStateFromMenu('main.joined')">
+            <h3>Tagged Instances - Articles</h3>
+        </md-list-item>
+        <md-list-item ng-click="vm.changeStateFromMenu('main.articles')">
+            <h3>Articles</h3>
         </md-list-item>
     </md-list>
 </md-sidenav>

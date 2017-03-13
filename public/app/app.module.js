@@ -6,6 +6,8 @@
         [
             'app.core',
             'app.main',
-            'app.main.grid'
+            'app.main.taggedInstances',
+            'app.main.joined',
+            'app.main.articles'
         ]);
 })();

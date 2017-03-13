@@ -8,17 +8,23 @@
     ApplicationController.$inject = ['$state', '$rootScope'];
     function ApplicationController($state, $rootScope) {
         var vm = this;
+        var defaultState = 'main.taggedInstances';
 
         activate();
 
         function activate() {
-            //default state
-            $state.go('main.grid');
+            $state.go(defaultState);
         }
 
-        //dynamic page title
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            //dynamic page title
             $rootScope.pageTitle = toState.data.title;
+
+            //preventing from accessing plain main state
+            if (toState.name === 'main') {
+                event.preventDefault();
+                $state.go(defaultState);
+            }
         });
     }
 })();

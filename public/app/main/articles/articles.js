@@ -2,14 +2,14 @@
     'use strict';
 
     angular
-        .module('app.main.grid')
-        .controller('GridController', GridController);
+        .module('app.main.articles')
+        .controller('ArticlesController', ArticlesController);
 
-    GridController.$inject = ['$state', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function GridController($state, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    ArticlesController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function ArticlesController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
-        vm.taggedInstances = {};
+        vm.articles = {};
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -35,10 +35,10 @@
         activate();
 
         function activate() {
-            ApiService.getTaggedInstances()
+            ApiService.getArticles()
                 .then(function (res) {
-                    vm.taggedInstances.data = res.data.collection;
-                    vm.taggedInstances.count = res.data.collection.length;
+                    vm.articles.data = res.data.collection;
+                    vm.articles.count = res.data.collection.length;
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
@@ -80,13 +80,13 @@
         };
 
         vm.refresh = function () {
-            vm.taggedInstances.data = [];
-            vm.taggedInstances.count = 0;
+            vm.articles.data = [];
+            vm.articles.count = 0;
 
-            vm.promise = ApiService.getTaggedInstances()
+            vm.promise = ApiService.getArticles()
                 .then(function (res) {
-                    vm.taggedInstances.data = res.data.collection;
-                    vm.taggedInstances.count = res.data.collection.length;
+                    vm.articles.data = res.data.collection;
+                    vm.articles.count = res.data.collection.length;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();

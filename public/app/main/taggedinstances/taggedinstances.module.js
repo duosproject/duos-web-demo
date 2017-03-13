@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.main.grid',
+        .module('app.main.taggedInstances',
         [
             'md.data.table'
         ]);

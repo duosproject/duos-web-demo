@@ -18,13 +18,31 @@
                     title: 'Main'
                 }
             })
-            .state('main.grid', {
-                url: '/grid',
-                templateUrl: 'app/main/grid/grid.html',
-                controller: 'GridController',
+            .state('main.taggedInstances', {
+                url: '/taggedinstances',
+                templateUrl: 'app/main/taggedinstances/taggedinstances.html',
+                controller: 'TaggedInstancesController',
                 controllerAs: 'vm',
                 data: {
-                    title: 'Tagged Instances Grid'
+                    title: 'Tagged Instances'
+                }
+            })
+            .state('main.joined', {
+                url: '/joined',
+                templateUrl: 'app/main/joined/joined.html',
+                controller: 'JoinedController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Tagged Instances - Articles'
+                }
+            })
+            .state('main.articles', {
+                url: '/articles',
+                templateUrl: 'app/main/articles/articles.html',
+                controller: 'ArticlesController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Articles'
                 }
             });
     }
