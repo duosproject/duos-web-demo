@@ -48,6 +48,47 @@ articles.hasMany(taggedInstances, {
     foreignKey: 'articleId'
 });
 
+variable.belongsTo(dataset, {
+    foreignKey: 'datId'
+});
+dataset.hasMany(variable, {
+    foreignKey: 'datId'
+});
+
+varSetContains.hasMany(variable, {
+    foreignKey: 'varId'
+});
+variable.belongsTo(varSetContains, {
+    foreignKey: 'varId'
+});
+
+variableSet.hasMany(varSetContains, {
+    foreignKey: 'varSetId'
+});
+varSetContains.belongsTo(variableSet, {
+    foreignKey: 'varSetId'
+});
+
+methodApplication.belongsTo(article, {
+    foreignKey: 'articleId'
+});
+article.hasMany(methodApplication, {
+    foreignKey: 'articleId'
+});
+
+methodApplication.belongsTo(methodology, {
+    foreignKey: 'methodId'
+});
+methodology.hasMany(methodApplication, {
+    foreignKey: 'methodId'
+});
+
+methodApplication.belongsTo(variableSet, {
+    foreignKey: 'varSetId'
+});
+variableSet.hasMany(methodApplication, {
+    foreignKey: 'varSetId'
+});
 
 module.exports = {
     taggedInstances: taggedInstances,
