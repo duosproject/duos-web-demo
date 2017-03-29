@@ -44,6 +44,15 @@
                 data: {
                     title: 'Articles'
                 }
+            })
+            .state('main.all', {
+                url: '/all',
+                templateUrl: 'app/main/all/all.html',
+                controller: 'AllController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'All'
+                }
             });
     }
 })();

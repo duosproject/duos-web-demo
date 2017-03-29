@@ -8,7 +8,7 @@
     ApplicationController.$inject = ['$state', '$rootScope'];
     function ApplicationController($state, $rootScope) {
         var vm = this;
-        var defaultState = 'main.taggedInstances';
+        var defaultState = 'main.all';
 
         activate();
 

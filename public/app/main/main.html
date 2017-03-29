@@ -19,11 +19,14 @@
     </md-toolbar>
 
     <md-list>
-        <md-list-item ng-click="vm.changeStateFromMenu('main.taggedInstances')">
-            <h3>Tagged Instances</h3>
+        <md-list-item ng-click="vm.changeStateFromMenu('main.all')">
+            <h3>All</h3>
         </md-list-item>
         <md-list-item ng-click="vm.changeStateFromMenu('main.joined')">
             <h3>Tagged Instances - Articles</h3>
+        </md-list-item>
+        <md-list-item ng-click="vm.changeStateFromMenu('main.taggedInstances')">
+            <h3>Tagged Instances</h3>
         </md-list-item>
         <md-list-item ng-click="vm.changeStateFromMenu('main.articles')">
             <h3>Articles</h3>
