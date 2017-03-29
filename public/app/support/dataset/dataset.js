@@ -36,14 +36,11 @@
         activate();
 
         function activate() {
-
-            console.log($stateParams.datasetId);
-
             ApiService.getVariablesForDataset($stateParams.datasetId)
                 .then(function (res) {
                     vm.variables.data = res.data.collection.Variables;
                     vm.variables.count = res.data.collection.Variables.length;
-                    vm.title = 'Variables for ' + res.data.collection.datasetName;
+                    vm.title = 'Variables for "' + res.data.collection.datasetName + '"';
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
@@ -93,7 +90,7 @@
                 .then(function (res) {
                     vm.variables.data = res.data.collection.Variables;
                     vm.variables.count = res.data.collection.Variables.length;
-                    vm.title = 'Variables for ' + res.data.collection.datasetName;
+                    vm.title = 'Variables for "' + res.data.collection.datasetName + '"';
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();
