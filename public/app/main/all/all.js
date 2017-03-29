@@ -40,8 +40,6 @@
                     vm.records.data = res.data.collection;
                     vm.records.count = res.data.collection.length;
                     vm.hideLoader = true;
-
-                    console.log(vm.records.data);
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.hideLoader = true;
