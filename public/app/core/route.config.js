@@ -44,6 +44,33 @@
                 data: {
                     title: 'Articles'
                 }
+            })
+            .state('main.all', {
+                url: '/all',
+                templateUrl: 'app/main/all/all.html',
+                controller: 'AllController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'All'
+                }
+            })
+            .state('support', {
+                url: '/support',
+                templateUrl: 'app/support/support.html',
+                controller: 'SupportController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Support'
+                }
+            })
+            .state('support.dataset', {
+                url: '/dataset/:datasetId',
+                templateUrl: 'app/support/dataset/dataset.html',
+                controller: 'DatasetController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Dataset'
+                }
             });
     }
 })();

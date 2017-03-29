@@ -2,6 +2,7 @@
 
 var db = require('../db/sequelizeInstance');
 var express = require('express');
+var allRecordsVm = require('../viewmodels/allRecordsViewModel');
 var router = express.Router();
 
 module.exports = function (app) {
@@ -46,6 +47,49 @@ module.exports = function (app) {
                 })
                 .catch(function (err) {
                     return res.status(500).json({ ok: false, error: err.message });
+                });
+        });
+
+    //returns all the records from all linked tables
+    router.route('/all')
+        .get(function (req, res) {
+            db.methodApplication.findAll({
+                attributes: [],
+                include: [{
+                    model: db.article,
+                    attributes: ['articleTitle']
+                },
+                {
+                    model: db.methodology,
+                    attributes: ['methodName']
+                },
+                {
+                    model: db.variableSet,
+                    include: [{
+                        model: db.varSetContains,
+                        attributes: ['varSetId'],
+                        include: [{
+                            model: db.variable,
+                            attributes: ['varName'],
+                            include: [{
+                                model: db.dataset,
+                                attributes: ['datId', 'datasetName']
+                            }]
+                        }]
+                    }]
+                }]
+            })
+                .then(function (data) {
+                    return res.status(200).json({
+                        ok: true,
+                        collection: allRecordsVm(data)
+                    });
+                })
+                .catch(function (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        error: err.message
+                    });
                 });
         });
 
