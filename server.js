@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 require('./backend/routes/coreRoute')(app);
+require('./backend/routes/supportRoute')(app);
 
 app.get('/*', function (req, res) {
     res.redirect('/');
