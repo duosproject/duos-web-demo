@@ -11,7 +11,8 @@
             getTaggedInstances: getTaggedInstances,
             getArticles: getArticles,
             getTaggedInstancesArticles: getTaggedInstancesArticles,
-            getAll: getAll
+            getAll: getAll,
+            getVariablesForDataset: getVariablesForDataset
         };
 
         return service;
@@ -34,6 +35,11 @@
         //returns all the records from all joined tables
         function getAll() {
             return $http.get('/api/core/all');
+        }
+
+        //returns all variables for selected dataset
+        function getVariablesForDataset(datasetId){
+            return $http.get('/api/support/dataset/variables/' + datasetId);
         }
     }
 })();

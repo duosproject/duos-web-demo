@@ -20,8 +20,8 @@
             //dynamic page title
             $rootScope.pageTitle = toState.data.title;
 
-            //preventing from accessing plain main state
-            if (toState.name === 'main') {
+            //preventing from accessing plain parent states
+            if (toState.name === 'main' || toState.name === 'support') {
                 event.preventDefault();
                 $state.go(defaultState);
             }
