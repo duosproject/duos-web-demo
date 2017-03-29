@@ -73,7 +73,7 @@ module.exports = function (app) {
                             attributes: ['varName'],
                             include: [{
                                 model: db.dataset,
-                                attributes: ['datasetName']
+                                attributes: ['datId', 'datasetName']
                             }]
                         }]
                     }]

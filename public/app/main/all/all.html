@@ -47,7 +47,7 @@
                     <tr md-row ng-repeat="model in vm.records.data | filter: vm.query.filter | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
                         <td md-cell>{{model.articleTitle}}</td>
                         <td md-cell>{{model.methodologyTitle}}</td>
-                        <td md-cell><a class="link" ui-sref="support.dataset({datasetId: 1})" target="_blank">{{model.datasetName}}</a></td>
+                        <td md-cell><a class="link" ui-sref="support.dataset({datasetId: model.datasetId})" target="_blank">{{model.datasetName}}</a></td>
                         <td md-cell>{{model.variableName}}</td>
                     </tr>
                 </tbody>
