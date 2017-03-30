@@ -12,6 +12,7 @@ module.exports = function (data) {
                     methodologyTitle: element.Methodology.methodName,
                     datasetName: variable.Dataset.datasetName,
                     datasetId: variable.Dataset.datId,
+                    variableSetId: element.VariableSet.varSetId,
                     variableName: variable.varName
                 });
             });

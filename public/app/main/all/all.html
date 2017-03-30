@@ -40,6 +40,7 @@
                         <th md-column md-order-by="articleTitle"><span>Article Title</span></th>
                         <th md-column md-order-by="methodologyTitle"><span>Methodology</span></th>
                         <th md-column md-order-by="datasetName"><span>Dataset</span></th>
+                        <th md-column md-order-by="variableSetId"><span>Variable Set ID</span></th>
                         <th md-column md-order-by="variableName"><span>Variable</span></th>
                     </tr>
                 </thead>
@@ -48,6 +49,7 @@
                         <td md-cell>{{model.articleTitle}}</td>
                         <td md-cell>{{model.methodologyTitle}}</td>
                         <td md-cell><a class="link" ui-sref="support.dataset({datasetId: model.datasetId})" target="_blank">{{model.datasetName}}</a></td>
+                        <td md-cell>{{model.variableSetId}}</td>
                         <td md-cell>{{model.variableName}}</td>
                     </tr>
                 </tbody>
