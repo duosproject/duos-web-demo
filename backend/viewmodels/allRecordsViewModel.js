@@ -13,11 +13,9 @@ module.exports = function (data) {
         };
 
         element.VariableSet.VarSetContains.forEach(function (varSet) {
-            varSet.Variables.forEach(function (variable) {
-                record.datasetName = variable.Dataset.datasetName;
-                record.datasetId = variable.Dataset.datId;
-                record.variables.push(variable.varName);
-            });
+            record.datasetName = varSet.Variable.Dataset.datasetName;
+            record.datasetId = varSet.Variable.Dataset.datId;
+            record.variables.push(varSet.Variable.varName);
         });
 
         collection.push(record);

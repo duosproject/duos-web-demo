@@ -38,16 +38,25 @@
         function activate() {
             ApiService.getVariablesForDataset($stateParams.datasetId)
                 .then(function (res) {
-                    vm.variables.data = res.data.collection.Variables;
-                    vm.variables.count = res.data.collection.Variables.length;
-                    vm.title = 'Variables for "' + res.data.collection.datasetName + '"';
-                    vm.hideLoader = true;
+                    if (res.data.collection !== null) {
+                        vm.variables.data = res.data.collection.Variables;
+                        vm.variables.count = res.data.collection.Variables.length;
+                        vm.title = 'Variables for "' + res.data.collection.datasetName + '"';
+                        vm.hideLoader = true;
+                    }
+                    else {
+                        generateErrorOnLoading('No data to show');
+                    }
                 }, function (err) {
-                    vm.errorMessage = err.data.error;
-                    vm.hideLoader = true;
-                    vm.showError = true;
-                    vm.showErrorDialog();
+                    generateErrorOnLoading(err.data.error);
                 });
+        }
+
+        function generateErrorOnLoading(errorMessage) {
+            vm.errorMessage = errorMessage;
+            vm.hideLoader = true;
+            vm.showError = true;
+            vm.showErrorDialog();
         }
 
         vm.showErrorDialog = function () {
