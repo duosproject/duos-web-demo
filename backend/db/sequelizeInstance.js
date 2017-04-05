@@ -58,7 +58,7 @@ dataset.hasMany(variable, {
 varSetContains.belongsTo(variable, {
     foreignKey: 'varId'
 });
-variable.hasOne(varSetContains, {
+variable.hasMany(varSetContains, {
     foreignKey: 'varId'
 });
 
