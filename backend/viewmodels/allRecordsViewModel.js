@@ -6,58 +6,101 @@ module.exports = function (data) {
 
     //looping through each entry
     data.forEach(function (element) {
-        var record = {
-            articleTitle: element.Article.articleTitle,
-            authors: [],
-            topics: [],
-            methodologyTitle: element.Methodology.methodName,
-            variableSetId: element.VariableSet.varSetId,
-            datasets: []
-        };
 
-        //looping through authors
-        element.Article.Writes.forEach(function (write) {
-            record.authors.push({
-                id: write.Author.authorId,
-                name: write.Author.authorName
-            });
-        });
+        var article;
 
-        //looping through topics
-        element.Article.Covers.forEach(function (cover) {
-            record.topics.push({
-                id: cover.Topic.topicId,
-                name: cover.Topic.topicName
+        //add new article or find existing
+        var existingArticleIndex = getExistingArticleIndex(collection, element.Article.articleId);
+        if (existingArticleIndex >= 0) {
+            article = collection[existingArticleIndex];
+        }
+        else {
+            article = {
+                articleId: element.Article.articleId,
+                articleTitle: element.Article.articleTitle,
+                authors: [],
+                topics: [],
+                methodologies: []
+            };
+            collection.push(article);
+
+            //looping through authors
+            element.Article.Writes.forEach(function (write) {
+                article.authors.push({
+                    authorId: write.Author.authorId,
+                    authorName: write.Author.authorName
+                });
             });
-        });
+
+            //looping through topics
+            element.Article.Covers.forEach(function (cover) {
+                article.topics.push({
+                    topicId: cover.Topic.topicId,
+                    topicName: cover.Topic.topicName
+                });
+            });
+        }
+
+        var methodology;
+
+        //add new methodology to the article or find existing
+        var existingMethodologyIndex = getExistingMethodologyIndex(article.methodologies, element.Methodology.methodId);
+        if (existingMethodologyIndex >= 0) {
+            methodology = article.methodologies[existingMethodologyIndex];
+        }
+        else {
+            methodology = {
+                methodId: element.Methodology.methodId,
+                methodName: element.Methodology.methodName,
+                datasets: []
+            };
+            article.methodologies.push(methodology);
+        }
 
         //looping through datasets and variables
         element.VariableSet.VarSetContains.forEach(function (varSet) {
-            var existingDataSetIndex = getExistingDatasetIndex(record.datasets, varSet.Variable.Dataset.datId);
+
+            //add new dataset to the methodology or find existing
+            var existingDataSetIndex = getExistingDatasetIndex(methodology.datasets, varSet.Variable.Dataset.datId);
             if (existingDataSetIndex >= 0) {
-                record.datasets[existingDataSetIndex].variables.push(varSet.Variable.varName);
+                methodology.datasets[existingDataSetIndex].variables.push(varSet.Variable.varName);
             }
             else {
                 var dataset = {
-                    datId: varSet.Variable.Dataset.datId,
+                    datasetId: varSet.Variable.Dataset.datId,
                     datasetName: varSet.Variable.Dataset.datasetName,
                     variables: [varSet.Variable.varName]
                 };
-                record.datasets.push(dataset);
+                methodology.datasets.push(dataset);
             }
         });
-
-        //adding formated entry to the new collection
-        collection.push(record);
     });
 
     return collection;
 };
 
-//helper function
+//helper functions
+function getExistingArticleIndex(articleCollection, articleId) {
+    for (var i = 0; i < articleCollection.length; i++) {
+        if (articleCollection[i].articleId === articleId) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function getExistingMethodologyIndex(methodologiesCollection, methodId) {
+    for (var i = 0; i < methodologiesCollection.length; i++) {
+        if (methodologiesCollection[i].methodId === methodId) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 function getExistingDatasetIndex(datasetCollection, datasetId) {
     for (var i = 0; i < datasetCollection.length; i++) {
-        if (datasetCollection[i].datId === datasetId) {
+        if (datasetCollection[i].datasetId === datasetId) {
             return i;
         }
     }
