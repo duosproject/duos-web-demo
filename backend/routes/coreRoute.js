@@ -90,7 +90,6 @@ module.exports = function (app) {
                     return res.status(200).json({
                         ok: true,
                         collection: allRecordsVm(data)
-                        //collection: data
                     });
                 })
                 .catch(function (err) {
