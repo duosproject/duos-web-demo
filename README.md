@@ -23,10 +23,10 @@ DUOS Project tackles the problem of extracting automatically and semi-automatica
 
 
 ----------
-**Auhtor**
+**Auhtor**  
 Yauheni Mukavozchyk
 
 ----------
 
-**License**
+**License**  
 [MIT](https://github.com/duosproject/duos-web/blob/master/LICENSE)
