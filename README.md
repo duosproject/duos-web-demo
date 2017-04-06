@@ -1,4 +1,4 @@
-# [DUOS Project](https://svetlozarn.github.io/duos-project/) - Web Application
+# [DUOS Project](https://duosproject.github.io/) - Web Application
 DUOS Project tackles the problem of extracting automatically and semi-automatically the relationships between publications, datasets, and methodologies. Our primary focus is on research articles in economics. From each article we extract details about specific datasets used, including variables and time periods as well as methodologies and techniques.
 
 #### [Web Application](http://duos-web.herokuapp.com/)
@@ -23,10 +23,10 @@ DUOS Project tackles the problem of extracting automatically and semi-automatica
 
 
 ----------
-**Auhtor**  
+**Auhtor**
 Yauheni Mukavozchyk
 
 ----------
 
-**License**  
+**License**
 [MIT](https://github.com/duosproject/duos-web/blob/master/LICENSE)
