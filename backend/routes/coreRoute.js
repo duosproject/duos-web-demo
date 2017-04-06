@@ -36,10 +36,8 @@ module.exports = function (app) {
     router.route('/taggedInstances/articles')
         .get(function (req, res) {
             db.taggedInstances.findAll({
-                attributes: { exclude: ['articleId'] },
                 include: [{
-                    model: db.articles,
-                    attributes: ['articleTitle', 'sourceId']
+                    model: db.articles
                 }]
             })
                 .then(function (data) {
@@ -57,23 +55,32 @@ module.exports = function (app) {
                 attributes: [],
                 include: [{
                     model: db.article,
-                    attributes: ['articleTitle']
+                    include: [
+                        {
+                            model: db.writes,
+                            include: [{
+                                model: db.author
+                            }]
+                        },
+                        {
+                            model: db.covers,
+                            include: [{
+                                model: db.topic
+                            }]
+                        }
+                    ]
                 },
                 {
                     model: db.methodology,
-                    attributes: ['methodName']
                 },
                 {
                     model: db.variableSet,
                     include: [{
                         model: db.varSetContains,
-                        attributes: ['varSetId'],
                         include: [{
                             model: db.variable,
-                            attributes: ['varName'],
                             include: [{
-                                model: db.dataset,
-                                attributes: ['datId', 'datasetName']
+                                model: db.dataset
                             }]
                         }]
                     }]
@@ -83,6 +90,7 @@ module.exports = function (app) {
                     return res.status(200).json({
                         ok: true,
                         collection: allRecordsVm(data)
+                        //collection: data
                     });
                 })
                 .catch(function (err) {
