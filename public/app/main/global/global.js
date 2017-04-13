@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('app.main.all')
-        .controller('AllController', AllController);
+        .module('app.main.global')
+        .controller('GlobalController', GlobalController);
 
-    AllController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function AllController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    GlobalController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function GlobalController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
         vm.records = {};
@@ -25,7 +25,6 @@
 
         vm.query = {
             filter: {},
-            order: '',
             limit: 10,
             page: 1
         };
@@ -35,7 +34,7 @@
         activate();
 
         function activate() {
-            ApiService.getAll()
+            ApiService.getGlobal()
                 .then(function (res) {
                     vm.records.data = res.data.collection;
                     vm.records.count = res.data.collection.length;
@@ -83,7 +82,7 @@
             vm.records.data = [];
             vm.records.count = 0;
 
-            vm.promise = ApiService.getAll()
+            vm.promise = ApiService.getGlobal()
                 .then(function (res) {
                     vm.records.data = res.data.collection;
                     vm.records.count = res.data.collection.length;

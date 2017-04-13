@@ -45,13 +45,13 @@
                     title: 'Articles'
                 }
             })
-            .state('main.all', {
-                url: '/all',
-                templateUrl: 'app/main/all/all.html',
-                controller: 'AllController',
+            .state('main.global', {
+                url: '/global',
+                templateUrl: 'app/main/global/global.html',
+                controller: 'GlobalController',
                 controllerAs: 'vm',
                 data: {
-                    title: 'All'
+                    title: 'Global'
                 }
             })
             .state('support', {

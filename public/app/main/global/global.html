@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-table-toolbar md-default" ng-show="!vm.filter.show">
             <div class="md-toolbar-tools">
-                <span>All</span>
+                <span>Global</span>
                 <div flex></div>
                 <md-button class="md-icon-button" ng-click="vm.showFilter()" aria-label="Filter">
                     <md-icon md-svg-icon="filter"></md-icon>
@@ -37,25 +37,42 @@
             <table md-table md-progress="vm.promise">
                 <thead md-head>
                     <tr md-row>
-                        <th md-column md-order-by="articleTitle"><span>Article</span></th>
-                        <th md-column md-order-by="methodologyTitle"><span>Methodology</span></th>
-                        <th md-column md-order-by="datasetName"><span>Dataset</span></th>
-                        <th md-column md-order-by="variableSetId"><span>Variable Set ID</span></th>
-                        <th md-column><span>Variable</span></th>
+                        <th md-column><span>Article</span></th>
+                        <th md-column><span>Authors</span></th>
+                        <th md-column><span>Topics</span></th>
+                        <th md-column class="md-column-custom-header"><span>Methodology</span></th>
+                        <th md-column class="md-column-custom-header"><span>Variable</span></th>
                     </tr>
                 </thead>
-                <tbody md-body ng-repeat="model in vm.records.data | filter: vm.query.filter | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                <tbody md-body ng-repeat="model in vm.records.data | filter: vm.query.filter | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
                     <tr>
-                        <td md-cell rowspan="{{model.variables.length + 1}}">{{model.articleTitle}}</td>
-                        <td md-cell rowspan="{{model.variables.length + 1}}">{{model.methodologyTitle}}</td>
-                        <td md-cell rowspan="{{model.variables.length + 1}}">
-                            <a class="link" ui-sref="support.dataset({datasetId: model.datasetId})" target="_blank">{{model.datasetName}}</a>
+                        <td md-cell rowspan="{{model.methodologies.length + 2}}">{{model.articleTitle}}</td>
+                        <td md-cell rowspan="{{model.methodologies.length + 2}}">
+                            <p ng-repeat="author in model.authors">
+                                <a class="link" ui-sref="main.global">{{author.authorName}}</a>
+                            </p>
                         </td>
-                        <td md-cell rowspan="{{model.variables.length + 1}}">{{model.variableSetId}}</td>
+                        <td md-cell rowspan="{{model.methodologies.length + 2}}">
+                            <p ng-repeat="topic in model.topics">
+                                <a class="link" ui-sref="main.global">{{topic.topicName}}</a>
+                            </p>
+                        </td>
                     </tr>
-                    <tr ng-repeat="variable in model.variables">
-                        <td class="md-row-collapsed" md-cell>{{variable}}</td>
+
+                    <tr ng-repeat="method in model.methodologies">
+                        <td md-cell class="md-cell-collapsed">
+                            <a class="link" ui-sref="main.global">{{method.methodName}}</a>
+                        </td>
+                        <td md-cell class="md-cell-collapsed-last">
+                            <span ng-repeat="dataset in method.datasets">
+                                <a class="link" ui-sref="support.dataset({datasetId: dataset.datasetId})" target="_blank">
+                                    <b>{{dataset.datasetName}}</b>
+                                </a>
+                                <p class="variable-block" ng-repeat="variable in dataset.variables">{{variable}}</p>
+                            </span>
+                        </td>
                     </tr>
+
                 </tbody>
             </table>
         </md-table-container>

@@ -2,7 +2,7 @@
 
 var db = require('../db/sequelizeInstance');
 var express = require('express');
-var allRecordsVm = require('../viewmodels/allRecordsViewModel');
+var globalRecordsVm = require('../viewmodels/globalRecordsViewModel');
 var router = express.Router();
 
 module.exports = function (app) {
@@ -49,7 +49,7 @@ module.exports = function (app) {
         });
 
     //returns all the records from all linked tables
-    router.route('/all')
+    router.route('/global')
         .get(function (req, res) {
             db.methodApplication.findAll({
                 attributes: [],
@@ -89,8 +89,7 @@ module.exports = function (app) {
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        collection: allRecordsVm(data)
-                        //collection: data
+                        collection: globalRecordsVm(data)
                     });
                 })
                 .catch(function (err) {

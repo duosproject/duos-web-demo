@@ -59,7 +59,6 @@ module.exports = function (data) {
 
         //looping through datasets and variables
         element.VariableSet.VarSetContains.forEach(function (varSet) {
-
             //add new dataset to the methodology or find existing
             var existingDataSetIndex = getExistingDatasetIndex(methodology.datasets, varSet.Variable.Dataset.datId);
             if (existingDataSetIndex >= 0) {
