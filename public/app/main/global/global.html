@@ -41,7 +41,7 @@
                         <th md-column><span>Authors</span></th>
                         <th md-column><span>Topics</span></th>
                         <th md-column class="md-column-custom-header"><span>Methodology</span></th>
-                        <th md-column class="md-column-custom-header"><span>Variable</span></th>
+                        <th md-column class="md-column-custom-header"><span>Variables</span></th>
                     </tr>
                 </thead>
                 <tbody md-body ng-repeat="model in vm.records.data | filter: vm.query.filter | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
