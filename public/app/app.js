@@ -8,7 +8,7 @@
     ApplicationController.$inject = ['$state', '$rootScope'];
     function ApplicationController($state, $rootScope) {
         var vm = this;
-        var defaultState = 'main.all';
+        var defaultState = 'main.global';
 
         activate();
 

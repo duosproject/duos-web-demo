@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.main.all',
+        .module('app.main.global',
         [
             'md.data.table'
         ]);

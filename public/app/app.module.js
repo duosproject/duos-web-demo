@@ -10,7 +10,7 @@
             'app.main.taggedInstances',
             'app.main.joined',
             'app.main.articles',
-            'app.main.all',
+            'app.main.global',
 
             'app.support',
             'app.support.dataset'

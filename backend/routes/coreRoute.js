@@ -2,7 +2,7 @@
 
 var db = require('../db/sequelizeInstance');
 var express = require('express');
-var allRecordsVm = require('../viewmodels/allRecordsViewModel');
+var globalRecordsVm = require('../viewmodels/globalRecordsViewModel');
 var router = express.Router();
 
 module.exports = function (app) {
@@ -36,10 +36,8 @@ module.exports = function (app) {
     router.route('/taggedInstances/articles')
         .get(function (req, res) {
             db.taggedInstances.findAll({
-                attributes: { exclude: ['articleId'] },
                 include: [{
-                    model: db.articles,
-                    attributes: ['articleTitle', 'sourceId']
+                    model: db.articles
                 }]
             })
                 .then(function (data) {
@@ -51,29 +49,38 @@ module.exports = function (app) {
         });
 
     //returns all the records from all linked tables
-    router.route('/all')
+    router.route('/global')
         .get(function (req, res) {
             db.methodApplication.findAll({
                 attributes: [],
                 include: [{
                     model: db.article,
-                    attributes: ['articleTitle']
+                    include: [
+                        {
+                            model: db.writes,
+                            include: [{
+                                model: db.author
+                            }]
+                        },
+                        {
+                            model: db.covers,
+                            include: [{
+                                model: db.topic
+                            }]
+                        }
+                    ]
                 },
                 {
                     model: db.methodology,
-                    attributes: ['methodName']
                 },
                 {
                     model: db.variableSet,
                     include: [{
                         model: db.varSetContains,
-                        attributes: ['varSetId'],
                         include: [{
                             model: db.variable,
-                            attributes: ['varName'],
                             include: [{
-                                model: db.dataset,
-                                attributes: ['datId', 'datasetName']
+                                model: db.dataset
                             }]
                         }]
                     }]
@@ -82,7 +89,7 @@ module.exports = function (app) {
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        collection: allRecordsVm(data)
+                        collection: globalRecordsVm(data)
                     });
                 })
                 .catch(function (err) {

@@ -9,7 +9,21 @@
     }
 }
 
-.md-row-collapsed{
+.md-cell-collapsed{
     height: 48px;
     border-left: 1px rgba(0,0,0,.12) solid;
+}
+
+
+.md-cell-collapsed-last{
+    @extend .md-cell-collapsed;
+    padding: 24px !important;
+}
+
+.md-column-custom-header{
+    padding-left: 24px !important;
+}
+
+.variable-block{
+    padding-left: 20px !important;
 }
