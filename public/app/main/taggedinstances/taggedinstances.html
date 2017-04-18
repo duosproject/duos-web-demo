@@ -6,11 +6,11 @@
 
     <md-card>
 
-        <md-toolbar class="md-table-toolbar md-default" ng-show="!vm.filter.show">
+        <md-toolbar class="md-table-toolbar md-default">
             <div class="md-toolbar-tools">
                 <span>Tagged Instances</span>
                 <div flex></div>
-                <md-button class="md-icon-button" ng-click="vm.showFilter()" aria-label="Filter">
+                <md-button class="md-icon-button" ng-click="vm.showFilter()" ng-show="!vm.filter.show" aria-label="Filter">
                     <md-icon md-svg-icon="filter"></md-icon>
                     <md-tooltip>Filter</md-tooltip>
                 </md-button>
