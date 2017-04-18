@@ -40,39 +40,32 @@
                         <th md-column><span>Article</span></th>
                         <th md-column><span>Authors</span></th>
                         <th md-column><span>Topics</span></th>
-                        <th md-column class="md-column-custom-header"><span>Methodology</span></th>
-                        <th md-column class="md-column-custom-header"><span>Variables</span></th>
+                        <th md-column class="md-column-custom-header"><span>Methodology Application</span></th>
                     </tr>
                 </thead>
                 <tbody md-body ng-repeat="model in vm.records.data | filter: vm.query.filter | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
                     <tr>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">{{model.articleTitle}}</td>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">
-                            <p ng-repeat="author in model.authors">
-                                <a class="link" ui-sref="main.global">{{author.authorName}}</a>
-                            </p>
+                            <span ng-repeat="author in model.authors">
+                                <a class="link" ui-sref="main.global">{{author.authorName}}{{$last ? '' : ', '}}</a>
+                            </span>
                         </td>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">
-                            <p ng-repeat="topic in model.topics">
-                                <a class="link" ui-sref="main.global">{{topic.topicName}}</a>
-                            </p>
-                        </td>
-                    </tr>
-
-                    <tr ng-repeat="method in model.methodologies">
-                        <td md-cell class="md-cell-collapsed">
-                            <a class="link" ui-sref="main.global">{{method.methodName}}</a>
-                        </td>
-                        <td md-cell class="md-cell-collapsed-last">
-                            <span ng-repeat="dataset in method.datasets">
-                                <a class="link" ui-sref="support.dataset({datasetId: dataset.datasetId})" target="_blank">
-                                    <b>{{dataset.datasetName}}</b>
-                                </a>
-                                <p class="variable-block" ng-repeat="variable in dataset.variables">{{variable}}</p>
+                            <span ng-repeat="topic in model.topics">
+                                <a class="link" ui-sref="main.global">{{topic.topicName}}{{$last ? '' : ', '}}</a>
                             </span>
                         </td>
                     </tr>
-
+                    <tr ng-repeat="method in model.methodologies">
+                        <td md-cell class="md-cell-collapsed">
+                            <p ng-repeat="dataset in method.datasets">
+                                <a class="link" ui-sref="main.global">{{method.methodName}}</a>
+                                <b>&rarr;</b>
+                                <a class="link" ui-sref="support.dataset({datasetId: dataset.datasetId})" target="_blank">{{dataset.datasetName}}</a>
+                            </p>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </md-table-container>
