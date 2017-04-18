@@ -17,7 +17,7 @@ module.exports = function (data) {
         else {
             article = {
                 articleId: element.Article.articleId,
-                articleTitle: element.Article.articleTitle,
+                articleTitle: element.Article.articleTitle.trim(),
                 authors: [],
                 topics: [],
                 methodologies: []
@@ -28,7 +28,7 @@ module.exports = function (data) {
             element.Article.Writes.forEach(function (write) {
                 article.authors.push({
                     authorId: write.Author.authorId,
-                    authorName: write.Author.authorName
+                    authorName: write.Author.authorName.trim()
                 });
             });
 
@@ -36,7 +36,7 @@ module.exports = function (data) {
             element.Article.Covers.forEach(function (cover) {
                 article.topics.push({
                     topicId: cover.Topic.topicId,
-                    topicName: cover.Topic.topicName
+                    topicName: cover.Topic.topicName.trim()
                 });
             });
         }
@@ -51,7 +51,7 @@ module.exports = function (data) {
         else {
             methodology = {
                 methodId: element.Methodology.methodId,
-                methodName: element.Methodology.methodName,
+                methodName: element.Methodology.methodName.trim(),
                 datasets: []
             };
             article.methodologies.push(methodology);
@@ -61,16 +61,11 @@ module.exports = function (data) {
         element.VariableSet.VarSetContains.forEach(function (varSet) {
             //add new dataset to the methodology or find existing
             var existingDataSetIndex = getExistingDatasetIndex(methodology.datasets, varSet.Variable.Dataset.datId);
-            if (existingDataSetIndex >= 0) {
-                methodology.datasets[existingDataSetIndex].variables.push(varSet.Variable.varName);
-            }
-            else {
-                var dataset = {
+            if (existingDataSetIndex === -1) {
+                methodology.datasets.push({
                     datasetId: varSet.Variable.Dataset.datId,
-                    datasetName: varSet.Variable.Dataset.datasetName,
-                    variables: [varSet.Variable.varName]
-                };
-                methodology.datasets.push(dataset);
+                    datasetName: varSet.Variable.Dataset.datasetName.trim()
+                });
             }
         });
     });

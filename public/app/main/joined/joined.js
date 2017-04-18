@@ -9,7 +9,7 @@
     function JoinedController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
-        vm.taggedInstancesArticles = {};
+        vm.taggedInstancesArticles = [];
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -37,8 +37,7 @@
         function activate() {
             ApiService.getTaggedInstancesArticles()
                 .then(function (res) {
-                    vm.taggedInstancesArticles.data = res.data.collection;
-                    vm.taggedInstancesArticles.count = res.data.collection.length;
+                    vm.taggedInstancesArticles = res.data.collection;
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
@@ -80,13 +79,11 @@
         };
 
         vm.refresh = function () {
-            vm.taggedInstancesArticles.data = [];
-            vm.taggedInstancesArticles.count = 0;
+            vm.taggedInstancesArticles = [];
 
             vm.promise = ApiService.getTaggedInstancesArticles()
                 .then(function (res) {
-                    vm.taggedInstancesArticles.data = res.data.collection;
-                    vm.taggedInstancesArticles.count = res.data.collection.length;
+                    vm.taggedInstancesArticles = res.data.collection;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();

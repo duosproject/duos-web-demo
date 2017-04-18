@@ -9,7 +9,7 @@
     function TaggedInstancesController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
-        vm.taggedInstances = {};
+        vm.taggedInstances = [];
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -37,8 +37,7 @@
         function activate() {
             ApiService.getTaggedInstances()
                 .then(function (res) {
-                    vm.taggedInstances.data = res.data.collection;
-                    vm.taggedInstances.count = res.data.collection.length;
+                    vm.taggedInstances = res.data.collection;
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
@@ -80,13 +79,11 @@
         };
 
         vm.refresh = function () {
-            vm.taggedInstances.data = [];
-            vm.taggedInstances.count = 0;
+            vm.taggedInstances = [];
 
             vm.promise = ApiService.getTaggedInstances()
                 .then(function (res) {
-                    vm.taggedInstances.data = res.data.collection;
-                    vm.taggedInstances.count = res.data.collection.length;
+                    vm.taggedInstances = res.data.collection;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();
