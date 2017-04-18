@@ -6,11 +6,11 @@
 
     <md-card>
 
-        <md-toolbar class="md-table-toolbar md-default" ng-show="!vm.filter.show">
+        <md-toolbar class="md-table-toolbar md-default">
             <div class="md-toolbar-tools">
                 <span>{{vm.title}}</span>
                 <div flex></div>
-                <md-button class="md-icon-button" ng-click="vm.showFilter()" aria-label="Filter">
+                <md-button class="md-icon-button" ng-click="vm.showFilter()" ng-show="!vm.filter.show" aria-label="Filter">
                     <md-icon md-svg-icon="filter"></md-icon>
                     <md-tooltip>Filter</md-tooltip>
                 </md-button>
@@ -41,7 +41,7 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="model in vm.variables.data | filter: vm.query.filter | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                    <tr md-row ng-repeat="model in vm.variables | filter: vm.query.filter | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
                         <td md-cell>{{model.varName}}</td>
                     </tr>
                 </tbody>
@@ -49,7 +49,7 @@
         </md-table-container>
 
         <md-table-pagination md-page-select md-boundary-links md-limit="vm.query.limit" md-limit-options="vm.limitOptions" md-page="vm.query.page"
-            md-total="{{vm.variables.count}}">
+            md-total="{{(vm.variables | filter: vm.query.filter).length}}">
         </md-table-pagination>
 
     </md-card>
