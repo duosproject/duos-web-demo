@@ -9,7 +9,7 @@
     function ArticlesController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
-        vm.articles = {};
+        vm.articles = [];
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -37,8 +37,7 @@
         function activate() {
             ApiService.getArticles()
                 .then(function (res) {
-                    vm.articles.data = res.data.collection;
-                    vm.articles.count = res.data.collection.length;
+                    vm.articles = res.data.collection;
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
@@ -80,13 +79,11 @@
         };
 
         vm.refresh = function () {
-            vm.articles.data = [];
-            vm.articles.count = 0;
+            vm.articles = [];
 
             vm.promise = ApiService.getArticles()
                 .then(function (res) {
-                    vm.articles.data = res.data.collection;
-                    vm.articles.count = res.data.collection.length;
+                    vm.articles = res.data.collection;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();

@@ -9,7 +9,7 @@
     function GlobalController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
-        vm.records = {};
+        vm.records = [];
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -36,8 +36,7 @@
         function activate() {
             ApiService.getGlobal()
                 .then(function (res) {
-                    vm.records.data = res.data.collection;
-                    vm.records.count = res.data.collection.length;
+                    vm.records = res.data.collection;
                     vm.hideLoader = true;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
@@ -79,18 +78,15 @@
         };
 
         vm.refresh = function () {
-            vm.records.data = [];
-            vm.records.count = 0;
+            vm.records = [];
 
             vm.promise = ApiService.getGlobal()
                 .then(function (res) {
-                    vm.records.data = res.data.collection;
-                    vm.records.count = res.data.collection.length;
+                    vm.records = res.data.collection;
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();
                 });
         };
-
     }
 })();

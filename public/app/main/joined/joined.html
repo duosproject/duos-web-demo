@@ -23,7 +23,8 @@
 
         <md-toolbar class="md-table-toolbar md-default ng-hide" ng-show="vm.filter.show">
             <div class="md-toolbar-tools">
-                <input id="filterInput" class="search-box" type="text" ng-model="vm.query.filter.$" ng-model-options="vm.filter.options" placeholder="Global search">
+                <input id="filterInput" class="search-box" type="text" ng-model="vm.query.filter.$" ng-model-options="vm.filter.options"
+                    placeholder="Global search">
                 <div flex></div>
                 <md-button class="md-icon-button" ng-click="vm.hideFilter()" aria-label="Clear">
                     <md-icon md-svg-icon="clear"></md-icon>
@@ -47,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="model in vm.taggedInstancesArticles.data | filter: vm.query.filter | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                    <tr md-row ng-repeat="model in vm.taggedInstancesArticles | filter: vm.query.filter | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
                         <td md-cell>{{model.instanceId}}</td>
                         <td md-cell>{{model.Article.articleTitle}}</td>
                         <td md-cell>{{model.Article.sourceId}}</td>
@@ -62,9 +63,8 @@
         </md-table-container>
 
         <md-table-pagination md-page-select md-boundary-links md-limit="vm.query.limit" md-limit-options="vm.limitOptions" md-page="vm.query.page"
-            md-total="{{vm.taggedInstancesArticles.count}}">
-            </md-table-pagination>
-
+            md-total="{{(vm.taggedInstancesArticles | filter: vm.query.filter).length}}">
+        </md-table-pagination>
     </md-card>
 
 </md-content>

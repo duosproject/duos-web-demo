@@ -43,7 +43,7 @@
                         <th md-column class="md-column-custom-header"><span>Methodology Application</span></th>
                     </tr>
                 </thead>
-                <tbody md-body ng-repeat="model in vm.records.data | filter: vm.query.filter | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                <tbody md-body ng-repeat="model in vm.records | filter: vm.query.filter | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
                     <tr>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">{{model.articleTitle}}</td>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">
@@ -71,7 +71,7 @@
         </md-table-container>
 
         <md-table-pagination md-page-select md-boundary-links md-limit="vm.query.limit" md-limit-options="vm.limitOptions" md-page="vm.query.page"
-            md-total="{{vm.records.count}}">
+            md-total="{{(vm.records | filter: vm.query.filter).length}}">
         </md-table-pagination>
 
     </md-card>
