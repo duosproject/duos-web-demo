@@ -52,7 +52,6 @@ module.exports = function (app) {
     router.route('/global')
         .get(function (req, res) {
             db.methodApplication.findAll({
-                attributes: [],
                 include: [{
                     model: db.article,
                     include: [
