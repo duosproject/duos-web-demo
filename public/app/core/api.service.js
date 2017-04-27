@@ -12,7 +12,11 @@
             getArticles: getArticles,
             getTaggedInstancesArticles: getTaggedInstancesArticles,
             getGlobal: getGlobal,
-            getVariablesForDataset: getVariablesForDataset
+            getVariablesForDataset: getVariablesForDataset,
+            getArticlesIdsByAuthor: getArticlesIdsByAuthor,
+            getArticlesIdsByTopic: getArticlesIdsByTopic,
+            getArticlesIdsByMethod: getArticlesIdsByMethod,
+            getArticlesByIds: getArticlesByIds
         };
 
         return service;
@@ -38,8 +42,30 @@
         }
 
         //returns all variables for selected dataset
-        function getVariablesForDataset(datasetId){
+        function getVariablesForDataset(datasetId) {
             return $http.get('/api/support/dataset/variables/' + datasetId);
+        }
+
+        //returns all articles' IDs for selected author
+        function getArticlesIdsByAuthor(authorId) {
+            return $http.get('/api/support/articles/author/' + authorId);
+        }
+
+        //returns all articles' IDs for selected topic
+        function getArticlesIdsByTopic(topicId) {
+            return $http.get('/api/support/articles/topic/' + topicId);
+        }
+
+        //returns all articles' IDs for selected method
+        function getArticlesIdsByMethod(methodId) {
+            return $http.get('/api/support/articles/method/' + methodId);
+        }
+
+        //returns selected articles' records from all linked tables
+        function getArticlesByIds(articlesIds) {
+            return $http.post('/api/support/articles/selected', {
+                articleIds: articlesIds
+            });
         }
     }
 })();

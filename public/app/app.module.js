@@ -13,6 +13,7 @@
             'app.main.global',
 
             'app.support',
-            'app.support.dataset'
+            'app.support.dataset',
+            'app.support.selected'
         ]);
 })();

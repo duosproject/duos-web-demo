@@ -71,6 +71,15 @@
                 data: {
                     title: 'Dataset'
                 }
+            })
+            .state('support.selected', {
+                url: '/selected/:type/:id',
+                templateUrl: 'app/support/selected/selected.html',
+                controller: 'SelectedController',
+                controllerAs: 'vm',
+                data: {
+                    title: 'Selected'
+                }
             });
     }
 })();
