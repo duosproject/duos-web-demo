@@ -2,8 +2,13 @@
 
 var db = require('../db/sequelizeInstance');
 var express = require('express');
-var articleIdVm = require('../viewmodels/supportArticlesIdViewModel');
+
+var articleIdsByAuthorVm = require('../viewmodels/supportArticlesIdsByAuthorViewModel');
+var articleIdsByTopicVm = require('../viewmodels/supportArticlesIdsByTopicViewModel');
+var articleIdsByMethodVm = require('../viewmodels/supportArticlesIdsByMethodViewModel');
+
 var globalRecordsVm = require('../viewmodels/globalRecordsViewModel');
+
 var router = express.Router();
 
 module.exports = function (app) {
@@ -30,15 +35,17 @@ module.exports = function (app) {
     router.route('/articles/author/:authorId')
         .get(function (req, res) {
             db.writes.findAll({
-                attributes: ['articleId'],
                 where: {
                     authorId: req.params.authorId
-                }
+                },
+                include: [{
+                    model: db.author
+                }]
             })
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        collection: articleIdVm(data)
+                        data: articleIdsByAuthorVm(data)
                     });
                 })
                 .catch(function (err) {
@@ -53,15 +60,17 @@ module.exports = function (app) {
     router.route('/articles/topic/:topicId')
         .get(function (req, res) {
             db.covers.findAll({
-                attributes: ['articleId'],
                 where: {
                     topicId: req.params.topicId
-                }
+                },
+                include: [{
+                    model: db.topic
+                }]
             })
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        collection: articleIdVm(data)
+                        data: articleIdsByTopicVm(data)
                     });
                 })
                 .catch(function (err) {
@@ -76,15 +85,20 @@ module.exports = function (app) {
     router.route('/articles/method/:methodId')
         .get(function (req, res) {
             db.methodApplication.findAll({
-                attributes: ['articleId'],
                 where: {
                     methodId: req.params.methodId
-                }
+                },
+                include: [{
+                    model: db.methodology,
+                    where: {
+                        methodId: req.params.methodId
+                    }
+                }]
             })
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        collection: articleIdVm(data)
+                        data: articleIdsByMethodVm(data)
                     });
                 })
                 .catch(function (err) {
@@ -96,14 +110,14 @@ module.exports = function (app) {
         });
 
     //returns selected articles' records from all linked tables
-    router.route('/global/articles')
+    router.route('/articles/selected')
         .post(function (req, res) {
             db.methodApplication.findAll({
                 include: [{
                     model: db.article,
                     where: {
                         articleId: {
-                            $in: JSON.parse(req.body.articleIds)
+                            $in: req.body.articleIds
                         }
                     },
                     include: [
