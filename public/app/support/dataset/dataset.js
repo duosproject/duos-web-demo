@@ -33,8 +33,6 @@
 
         vm.promise = {};
 
-        activate();
-
         function activate() {
             ApiService.getVariablesForDataset($stateParams.datasetId)
                 .then(function (res) {
@@ -102,5 +100,7 @@
                     vm.showErrorDialog();
                 });
         };
+
+        activate();
     }
 })();

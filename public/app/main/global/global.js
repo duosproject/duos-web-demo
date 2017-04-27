@@ -31,10 +31,8 @@
 
         vm.promise = {};
 
-        activate();
-
         function activate() {
-            ApiService.getGlobal()
+            return ApiService.getGlobal()
                 .then(function (res) {
                     vm.records = res.data.collection;
                     vm.hideLoader = true;
@@ -79,14 +77,9 @@
 
         vm.refresh = function () {
             vm.records = [];
-
-            vm.promise = ApiService.getGlobal()
-                .then(function (res) {
-                    vm.records = res.data.collection;
-                }, function (err) {
-                    vm.errorMessage = err.data.error;
-                    vm.showErrorDialog();
-                });
+            vm.promise = activate();
         };
+
+        activate();
     }
 })();
