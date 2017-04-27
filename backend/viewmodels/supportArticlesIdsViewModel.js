@@ -2,11 +2,7 @@
 
 //returns an array of article IDs
 module.exports = function (data) {
-    var authorName = '';
     var ids = [];
-
-    //setting method name
-    authorName = data[0].Author.authorName;
 
     //looping through each entry
     data.forEach(function (element) {
@@ -16,5 +12,5 @@ module.exports = function (data) {
         }
     });
 
-    return { authorName, ids };
+    return ids;
 };

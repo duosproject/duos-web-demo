@@ -2,13 +2,8 @@
 
 var db = require('../db/sequelizeInstance');
 var express = require('express');
-
-var articleIdsByAuthorVm = require('../viewmodels/supportArticlesIdsByAuthorViewModel');
-var articleIdsByTopicVm = require('../viewmodels/supportArticlesIdsByTopicViewModel');
-var articleIdsByMethodVm = require('../viewmodels/supportArticlesIdsByMethodViewModel');
-
+var articleIdsVm = require('../viewmodels/supportArticlesIdsViewModel');
 var globalRecordsVm = require('../viewmodels/globalRecordsViewModel');
-
 var router = express.Router();
 
 module.exports = function (app) {
@@ -45,7 +40,10 @@ module.exports = function (app) {
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        data: articleIdsByAuthorVm(data)
+                        set: {
+                            title: data[0].Author.authorName,
+                            ids: articleIdsVm(data)
+                        }
                     });
                 })
                 .catch(function (err) {
@@ -70,7 +68,10 @@ module.exports = function (app) {
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        data: articleIdsByTopicVm(data)
+                        set: {
+                            title: data[0].Topic.topicName,
+                            ids: articleIdsVm(data)
+                        }
                     });
                 })
                 .catch(function (err) {
@@ -98,7 +99,10 @@ module.exports = function (app) {
                 .then(function (data) {
                     return res.status(200).json({
                         ok: true,
-                        data: articleIdsByMethodVm(data)
+                        set: {
+                            title: data[0].Methodology.methodName,
+                            ids: articleIdsVm(data)
+                        }
                     });
                 })
                 .catch(function (err) {
