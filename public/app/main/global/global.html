@@ -48,19 +48,25 @@
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">{{model.articleTitle}}</td>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">
                             <span ng-repeat="author in model.authors">
-                                <a class="link" ui-sref="main.global">{{author.authorName}}{{$last ? '' : ', '}}</a>
+                                <a class="link" ui-sref="support.selected({type: 'author' , id: author.authorId})" target="_blank">
+                                    {{author.authorName}}{{$last ? '' : ', '}}
+                                </a>
                             </span>
                         </td>
                         <td md-cell rowspan="{{model.methodologies.length + 2}}">
                             <span ng-repeat="topic in model.topics">
-                                <a class="link" ui-sref="main.global">{{topic.topicName}}{{$last ? '' : ', '}}</a>
+                                <a class="link" ui-sref="support.selected({type: 'topic' , id: topic.topicId})" target="_blank">
+                                    {{topic.topicName}}{{$last ? '' : ', '}}
+                                </a>
                             </span>
                         </td>
                     </tr>
                     <tr ng-repeat="method in model.methodologies">
                         <td md-cell class="md-cell-collapsed">
                             <p ng-repeat="dataset in method.datasets">
-                                <a class="link" ui-sref="main.global">{{method.methodName}}</a>
+                                <a class="link" ui-sref="support.selected({type: 'method' , id: method.methodId})" target="_blank">
+                                    {{method.methodName}}
+                                </a>
                                 <b>&rarr;</b>
                                 <a class="link" ui-sref="support.dataset({datasetId: dataset.datasetId})" target="_blank">{{dataset.datasetName}}</a>
                             </p>
