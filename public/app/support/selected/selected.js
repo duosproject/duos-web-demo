@@ -2,13 +2,14 @@
     'use strict';
 
     angular
-        .module('app.main.global')
-        .controller('GlobalController', GlobalController);
+        .module('app.support.selected')
+        .controller('SelectedController', SelectedController);
 
-    GlobalController.$inject = ['$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
-    function GlobalController($timeout, $window, $mdSidenav, $mdDialog, ApiService) {
+    SelectedController.$inject = ['$stateParams', '$timeout', '$window', '$mdSidenav', '$mdDialog', 'ApiService'];
+    function SelectedController($stateParams, $timeout, $window, $mdSidenav, $mdDialog, ApiService) {
         var vm = this;
 
+        vm.title = '';
         vm.records = [];
 
         vm.hideLoader = false;
@@ -32,7 +33,46 @@
         vm.promise = {};
 
         function activate() {
-            return ApiService.getGlobal()
+            switch ($stateParams.type) {
+                case 'author': {
+                    vm.title = 'Author: ';
+                    return process(ApiService.getArticlesIdsByAuthor);
+                }
+                    break;
+                case 'topic': {
+                    vm.title = 'Topic: ';
+                    return process(ApiService.getArticlesIdsByTopic);
+                }
+                    break;
+                case 'method': {
+                    vm.title = 'Methodology: ';
+                    return process(ApiService.getArticlesIdsByMethod);
+                }
+                    break;
+                default: {
+                    vm.errorMessage = 'Incorrect URL parameter';
+                    vm.hideLoader = true;
+                    vm.showError = true;
+                    vm.showErrorDialog();
+                }
+            }
+        }
+
+        function process(processFunction) {
+            processFunction($stateParams.id)
+                .then(function (res) {
+                    vm.title += res.data.set.title;
+                    fetchArticles(res.data.set.ids);
+                }, function (err) {
+                    vm.errorMessage = err.set.error;
+                    vm.hideLoader = true;
+                    vm.showError = true;
+                    vm.showErrorDialog();
+                });
+        }
+
+        function fetchArticles(articlesIds) {
+            ApiService.getArticlesByIds(articlesIds)
                 .then(function (res) {
                     vm.records = res.data.collection;
                     vm.hideLoader = true;

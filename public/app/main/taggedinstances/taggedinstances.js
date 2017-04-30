@@ -32,10 +32,8 @@
 
         vm.promise = {};
 
-        activate();
-
         function activate() {
-            ApiService.getTaggedInstances()
+            return ApiService.getTaggedInstances()
                 .then(function (res) {
                     vm.taggedInstances = res.data.collection;
                     vm.hideLoader = true;
@@ -80,14 +78,9 @@
 
         vm.refresh = function () {
             vm.taggedInstances = [];
-
-            vm.promise = ApiService.getTaggedInstances()
-                .then(function (res) {
-                    vm.taggedInstances = res.data.collection;
-                }, function (err) {
-                    vm.errorMessage = err.data.error;
-                    vm.showErrorDialog();
-                });
+            vm.promise = activate();
         };
+
+        activate();
     }
 })();

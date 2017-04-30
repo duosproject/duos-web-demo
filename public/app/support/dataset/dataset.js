@@ -10,7 +10,7 @@
         var vm = this;
 
         vm.title = '';
-        vm.variables = {};
+        vm.variables = [];
 
         vm.hideLoader = false;
         vm.showError = false;
@@ -33,14 +33,11 @@
 
         vm.promise = {};
 
-        activate();
-
         function activate() {
             ApiService.getVariablesForDataset($stateParams.datasetId)
                 .then(function (res) {
                     if (res.data.collection !== null) {
-                        vm.variables.data = res.data.collection.Variables;
-                        vm.variables.count = res.data.collection.Variables.length;
+                        vm.variables = res.data.collection.Variables;
                         vm.title = 'Variables for "' + res.data.collection.datasetName + '"';
                         vm.hideLoader = true;
                     }
@@ -91,19 +88,19 @@
         };
 
         vm.refresh = function () {
-            vm.variables.data = [];
-            vm.variables.count = 0;
+            vm.variables = [];
             vm.title = '';
 
             vm.promise = ApiService.getVariablesForDataset($stateParams.datasetId)
                 .then(function (res) {
-                    vm.variables.data = res.data.collection.Variables;
-                    vm.variables.count = res.data.collection.Variables.length;
+                    vm.variables = res.data.collection.Variables;
                     vm.title = 'Variables for "' + res.data.collection.datasetName + '"';
                 }, function (err) {
                     vm.errorMessage = err.data.error;
                     vm.showErrorDialog();
                 });
         };
+
+        activate();
     }
 })();

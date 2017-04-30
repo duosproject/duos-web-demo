@@ -32,10 +32,8 @@
 
         vm.promise = {};
 
-        activate();
-
         function activate() {
-            ApiService.getArticles()
+            return ApiService.getArticles()
                 .then(function (res) {
                     vm.articles = res.data.collection;
                     vm.hideLoader = true;
@@ -80,14 +78,9 @@
 
         vm.refresh = function () {
             vm.articles = [];
-
-            vm.promise = ApiService.getArticles()
-                .then(function (res) {
-                    vm.articles = res.data.collection;
-                }, function (err) {
-                    vm.errorMessage = err.data.error;
-                    vm.showErrorDialog();
-                });
+            vm.promise = activate();
         };
+
+        activate();
     }
 })();

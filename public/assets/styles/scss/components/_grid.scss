@@ -12,12 +12,10 @@
 .md-cell-collapsed{
     height: 48px;
     border-left: 1px rgba(0,0,0,.12) solid;
-}
 
-
-.md-cell-collapsed-last{
-    @extend .md-cell-collapsed;
-    padding: 24px !important;
+    @media only screen and (min-width : 1200px) {
+        min-width: 500px !important;
+    }
 }
 
 .md-column-custom-header{
