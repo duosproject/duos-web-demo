@@ -4,6 +4,9 @@
   "license": "MIT",
   "version": "0.0.1",
   "author": "Yauheni Mukavozchyk <ymukavozchyk@luc.edu>",
+  "engines": {
+    "node" : ">=8.1.4"
+  },
   "dependencies": {
     "express": "^4.0.0",
     "body-parser": "^1.0.0",
